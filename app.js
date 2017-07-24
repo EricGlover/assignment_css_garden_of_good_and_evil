@@ -1,14 +1,23 @@
-const express = require("Express");
-const app = express();
+const express = require("express");
 const hbs = require("express-handlebars");
 const body_parser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const port = 3000;
 const path = require("path");
 
-// cookies
+const utils = require('./utils');
+
+// init express
+const app = express();
+const port = 3000;
+
+// init handlebars
+app.engine("handlebars", hbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// middleware
 app.use(cookieParser());
+
 app.use(
   session({
     secret: "123456969",
@@ -16,41 +25,38 @@ app.use(
     saveUninitialized: true
   })
 );
-app.use(body_parser.urlencoded({ extended: true }));
 
+app.use(body_parser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-//set up handlebars
-app.engine("handlebars", hbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-//run that surver
+// paths
 app.get("/", (req, res) => {
-  console.log(req.session.visited);
-  if (req.session.visited) {
-    console.log("hello again");
+	let cookieObj = null;
+
+  if (req.cookies.e_g) {
+  	cookieObj = req.cookies.e_g;
+  	res.render("index", { cookieObj });
+  	
   } else {
-    req.session.visited = true;
+  	res.render("index");
   }
-  const morality = req.cookies.e_g.morality;
-  //console.log(req.cookies);
-  res.render("index", { morality });
 });
 
 app.post("/", (req, res) => {
-  // const id = req.params.id;
+	let cookieObj = utils.cookieTools.generateCookie(req.body);
 
-  console.log(req.cookies.e_g);
-  const cookie_obj = {
-    morality: req.body.morality
-  };
-  //const evil_or_good = req.cookies.e_g || {};
-  res.cookie("e_g", cookie_obj);
-  //const favorites = req.cookies.favorites || [];
-  //res.cookie("favorites", favorites.push(id));
+	console.log(cookieObj);
 
+  // const cookie_obj = {
+  //   morality: {
+  //   	color: req.body.morality
+  //   }
+  // };
+
+  res.cookie("e_g", cookieObj);
   res.redirect("/");
 });
+
 
 app.listen(port, (err, data) => {
   console.log(`server listening on localhost:${port}`);

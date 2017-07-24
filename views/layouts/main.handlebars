@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <!-- Head -->
   <head>
     <meta charset="UTF-8">
     <title>CSS GARDEN OF EVIL / Cookie Bakery</title>
-
-    <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='styles.css'>
-
   </head>
-  <body>
+  <body class={{ cookieObj.alignment }}>
+    <p class={{ cookieObj.font }}>{{ cookieObj.text }}</p>
     {{{ body }}}
   </body>
 </html>
