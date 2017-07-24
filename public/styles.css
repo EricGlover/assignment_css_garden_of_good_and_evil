@@ -12,7 +12,12 @@
 
 .good {
 	color: white;
-	background: url('https://i.ytimg.com/vi/IhnUgAaea4M/hqdefault.jpg')
+	background: url('http://i1.kym-cdn.com/photos/images/original/000/968/532/518.jpg')
 						no-repeat
 						center / cover;
 }
+
+.good-font {
+	font-size: 3em;
+}
+

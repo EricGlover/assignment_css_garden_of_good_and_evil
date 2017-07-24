@@ -38,13 +38,15 @@
 
   <!-- likes / dislikes -->
   <section>
-    <ul>Likes
+    <h3>Likes</h3>
+    <ul>
       {{#each likes as |like|}}
         <li>{{like}}</li>
       {{/each}}
     </ul>
 
-    <ul>Dislikes
+    <h3>Dislikes</h3>
+    <ul>
     {{#each dislikes as |dislike| }}
       <li> {{dislike}} </li>
     {{/each}}
@@ -52,6 +54,7 @@
   </section>
 
   <!-- bio -->
+  <h1>Biography</h1>
   <section>
     <p>{{bio}}</p>
   </section>
@@ -59,11 +62,26 @@
 
   <!-- resume -->
   <section>
-    <h3>My Resume</h3>
+    <h1>My Resume</h1>
 
-    <ul>Jobs
+    <h3>Jobs</h3>
+    <ul>
       {{#each resume.jobs as |job|}}
         <li>{{job}}</li>
+      {{/each}}
+    </ul>
+
+    <h3>Skills</h3>
+    <ul>
+      {{#each resume.skills as |skill|}}
+        <li>{{skill}}</li>
+      {{/each}}
+    </ul>
+
+    <h3>Education</h3>
+    <ul>
+      {{#each resume.education as |item|}}
+        <li>{{item}}</li>
       {{/each}}
     </ul>
   </section>
