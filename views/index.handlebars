@@ -58,7 +58,15 @@
 
 
   <!-- resume -->
+  <section>
+    <h3>My Resume</h3>
 
+    <ul>Jobs
+      {{#each resume.jobs as |job|}}
+        <li>{{job}}</li>
+      {{/each}}
+    </ul>
+  </section>
 
   <!-- things , etc... -->
 </div>
