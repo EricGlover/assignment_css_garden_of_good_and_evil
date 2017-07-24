@@ -15,33 +15,41 @@
 
 
     <div class="form-group">
-      <label for="comment">Favorite food:</label>
-      <input type="text" class="form-control" id="comment"></input>
+      <label for="favorite-food">Favorite food:</label>
+      <input type="text" class="form-control" id="favorite-food" name="favorite-food"></input>
     </div>
 
-{{!--     <div class="btn-group">
-      <button type="button" class="btn btn-danger">Favorite Color</button>
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Black</a></li>
-        <li><a href="#">Blue</a></li>
-        <li><a href="#">Orange</a></li>
-        <li><a href="#">Pink</a></li>
-        <li><a href="#">Green</a></li>
-        <li><a href="#">Red</a></li>
-      </ul>
-    </div>
+    <select name='favorite-color' class="form-control">
+      <option value='red'>Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+      <option value="orange">Orange</option>
+    </select>
 
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
-    </div>  --}}
+    <div class="row">
+      <label>0</label>
+      <input type="range" min="0" max="100" step="2" name='insanity'></input>
+      <label>100</label>
+    </div>
 
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
-</div>
 
+  <!-- likes / dislikes -->
+  <ul>Likes
+    <li>{{ favorite-color }}</li>
+    <li>{{ favorite-food }}</li>
+    <li>{{ insanity }}</li>
+  </ul>
+  <ul>Dislikes
+  {{#each dislike in dislikes }}
+    <li> {{dislike}} </li>
+  {{#end}}
+  </ul>
+  <!-- bio -->
+
+  <!-- resume -->
+
+  <!-- things , etc... -->
+</div>

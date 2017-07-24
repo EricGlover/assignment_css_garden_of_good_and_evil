@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const path = require("path");
 
-const utils = require('./utils');
+const utils = require("./utils");
 
 // init express
 const app = express();
@@ -31,21 +31,37 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // paths
 app.get("/", (req, res) => {
-	let cookieObj = null;
+  let cookieObj = null;
 
   if (req.cookies.e_g) {
-  	cookieObj = req.cookies.e_g;
-  	res.render("index", { cookieObj });
-  	
+    cookieObj = req.cookies.e_g;
+    console.log(cookieObj);
+    //make objects to pass to views
+
+    //res.render("index", { cookieObj });
+    const view_data = viewData(cookieObj);
+    res.render('index', {cookieObj,  {dislikes: view_data.dislikes} } )
   } else {
-  	res.render("index");
+    res.render("index");
   }
 });
 
-app.post("/", (req, res) => {
-	let cookieObj = utils.cookieTools.generateCookie(req.body);
+//cookie information -> sensible data for views
+function viewData(cookieObj) {
+  const view_data = {
+    dislikes: []
+  };
+  if (cookieObj.morality == "evil") {
+    //handle dislikes
+    view_data.dislikes = ['kittens', 'coffee', 'hippies']
+  } else if (cookieObj.morality == "good") {
+    view_data.dislikes = ['mice????', 'rainy days', 'hippies']
+  }
+  return view_data;
+}
 
-	console.log(cookieObj);
+app.post("/", (req, res) => {
+  let cookieObj = utils.cookieTools.customizeCookie(req.body);
 
   // const cookie_obj = {
   //   morality: {
@@ -56,7 +72,6 @@ app.post("/", (req, res) => {
   res.cookie("e_g", cookieObj);
   res.redirect("/");
 });
-
 
 app.listen(port, (err, data) => {
   console.log(`server listening on localhost:${port}`);
