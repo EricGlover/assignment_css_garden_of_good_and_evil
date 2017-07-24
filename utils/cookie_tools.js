@@ -1,4 +1,5 @@
 module.exports = {
+	// TODO: similar functionality - refactor later
   customizeCookie: requestBody => {
     let cookie = {};
 
@@ -40,8 +41,6 @@ module.exports = {
       bio: bio,
       resume: resume
     };
-
-    console.log(cookieObj, "what is this");
 
     if (cookieObj.morality == "evil") {
       location = "Canada";

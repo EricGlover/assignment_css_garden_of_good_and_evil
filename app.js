@@ -35,12 +35,9 @@ app.get("/", (req, res) => {
 
   if (req.cookies.e_g) {
     cookieObj = req.cookies.e_g;
-    console.log(cookieObj);
+
     //make objects to pass to views
-
     const view = utils.cookieTools.viewData(cookieObj);
-
-    console.log(view, "what is this");
 
     res.render("index", {
       cookieObj,
