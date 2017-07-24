@@ -1,0 +1,25 @@
+{
+  "name": "assignment_css_garden_of_good_and_evil",
+  "version": "1.0.0",
+  "description": "Eric Benny Create a CSS garden that adapts to your whims.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricGlover/assignment_css_garden_of_good_and_evil.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricGlover/assignment_css_garden_of_good_and_evil/issues"
+  },
+  "homepage": "https://github.com/EricGlover/assignment_css_garden_of_good_and_evil#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "nodemon": "^1.11.0"
+  }
+}
