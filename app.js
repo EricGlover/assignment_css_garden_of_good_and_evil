@@ -39,8 +39,17 @@ app.get("/", (req, res) => {
     //make objects to pass to views
 
     //res.render("index", { cookieObj });
-    const view_data = viewData(cookieObj);
-    res.render('index', {cookieObj,  {dislikes: view_data.dislikes} } )
+    const view = viewData(cookieObj);
+
+    console.log(view, 'what is this')
+
+    res.render('index', {
+    	cookieObj, 
+    	dislikes: view.dislikes, 
+    	likes: view.likes,
+    	bio: view.bio
+    })
+
   } else {
     res.render("index");
   }
@@ -48,16 +57,33 @@ app.get("/", (req, res) => {
 
 //cookie information -> sensible data for views
 function viewData(cookieObj) {
-  const view_data = {
-    dislikes: []
+	let favoriteColor = cookieObj['favorite-color'];
+  let favoriteFood = cookieObj['favorite-food'];
+  let insanity = cookieObj['insanity'];
+
+  let bio = '';
+  let location = '';
+
+  let viewData = {
+    dislikes: [],
+    likes: [favoriteColor, favoriteFood, insanity],
+    bio: bio
   };
+
+  console.log(cookieObj, 'what is this')
+
   if (cookieObj.morality == "evil") {
+  	location = 'Canada';
     //handle dislikes
-    view_data.dislikes = ['kittens', 'coffee', 'hippies']
+    viewData.dislikes = ['kittens', 'coffee', 'hippies'];
+    console.log(viewData.dislikes)
   } else if (cookieObj.morality == "good") {
-    view_data.dislikes = ['mice????', 'rainy days', 'hippies']
+  	location = 'USA';
+    viewData.dislikes = ['mice????', 'rainy days', 'hippies']
   }
-  return view_data;
+
+  viewData.bio = `I grew up in ${location} and my favorite color is ${favoriteColor}.`
+  return viewData;
 }
 
 app.post("/", (req, res) => {

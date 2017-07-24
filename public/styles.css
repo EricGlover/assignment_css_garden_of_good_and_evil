@@ -1,6 +1,8 @@
 .evil {
-  background-color: red;
-
+	color: white;
+	background: url('https://www.pixelstalk.net/wp-content/uploads/2016/10/Canada-Flag-Backgrounds-768x480.jpg')
+							no-repeat
+							center / cover;
 }
 
 .evil-font {
@@ -9,5 +11,8 @@
 
 
 .good {
-  background-color: green;
+	color: white;
+	background: url('https://i.ytimg.com/vi/IhnUgAaea4M/hqdefault.jpg')
+						no-repeat
+						center / cover;
 }

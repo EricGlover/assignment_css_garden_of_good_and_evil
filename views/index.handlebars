@@ -37,19 +37,28 @@
   </form>
 
   <!-- likes / dislikes -->
-  <ul>Likes
-    <li>{{ favorite-color }}</li>
-    <li>{{ favorite-food }}</li>
-    <li>{{ insanity }}</li>
-  </ul>
-  <ul>Dislikes
-  {{#each dislike in dislikes }}
-    <li> {{dislike}} </li>
-  {{#end}}
-  </ul>
+  <section>
+    <ul>Likes
+      {{#each likes as |like|}}
+        <li>{{like}}</li>
+      {{/each}}
+    </ul>
+
+    <ul>Dislikes
+    {{#each dislikes as |dislike| }}
+      <li> {{dislike}} </li>
+    {{/each}}
+    </ul>
+  </section>
+
   <!-- bio -->
+  <section>
+    <p>{{bio}}</p>
+  </section>
+
 
   <!-- resume -->
+
 
   <!-- things , etc... -->
 </div>
