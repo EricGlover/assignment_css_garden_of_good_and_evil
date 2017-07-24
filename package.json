@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/EricGlover/assignment_css_garden_of_good_and_evil#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "nodemon": "^1.11.0"
